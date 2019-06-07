@@ -10,23 +10,24 @@ const append = (parent, el) => {
 };
 // Manipulate date
 const formatDate = date => {
-  let formattedDate;
   var options = {
     weekday: "long",
     year: "numeric",
     month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false
+    day: "numeric"
   };
-  formattedDate = new Date(date).toLocaleTimeString("en-us", options);
-  formattedDate.slice(0, formattedDate.length - 10);
-  return formattedDate.slice(0, formattedDate.length - 10);
+  let formattedDate = new Date(date).toLocaleTimeString("en-us", options);
+  return formattedDate.slice(0, formattedDate.length - 12);
 };
 
-// static elements from HTML
+const formatTime = timestamp => {
+  return new Date(timestamp).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+};
+
+// Static elements from HTML
 const messagesWrapper = document.querySelector(".messages");
 const dateWrapper = document.querySelector(".header__date");
 
@@ -35,36 +36,45 @@ fetch(API_RESOURCE)
   .then(data => {
     console.log(data.data);
 
-    // data variables to append
-    let messages = data.data.messages;
-    let date = data.data.conversationDate;
-    let formattedDate = formatDate(date);
-
+    const messages = data.data.messages,
+      date = data.data.conversationDate;
     return messages.map(message => {
-      const user = message.username;
-      // create nodes
+      // Data variables to append
+      const formattedDate = formatDate(date),
+        formattedTime = formatTime(message.timestamp);
+
+      // Check for active user and apply correct class name
+      // In a real application, I would be checking against the active user data held in state
+      const user = message.username.split(" ").join("");
+      const userStyle = user === "CharlieHemn" ? "activeUser" : "otherUser";
+      const focused = message.focused ? "focused" : "";
+
+      // Create nodes
       let li = createNode("li"),
         userImg = createNode("img"),
         userName = createNode("span"),
+        messageTime = createNode("span"),
         userMessage = createNode("span"),
         contentWrapper = createNode("div"),
         messageMeta = createNode("div");
 
-      //node class names
-      li.className = `message`;
+      // Node class names
+      li.className = `message message__${userStyle} ${focused}`;
       userImg.className = `message__userImg`;
       userName.className = `message__userName`;
+      messageTime.className = `message__messageTime`;
       contentWrapper.className = "message__contentWrapper";
       messageMeta.className = "message__meta";
 
-      // assign data to nodes
+      // Assign data to nodes
       userImg.src = message.image;
-      userName.innerHTML = `${message.username}`;
-      userMessage.innerHTML = `${message.message}`;
-      dateWrapper.innerHTML = `${formattedDate}`;
+      userName.innerHTML = message.username;
+      messageTime.innerHTML = formattedTime;
+      userMessage.innerHTML = message.message;
+      dateWrapper.innerHTML = formattedDate;
 
       append(messageMeta, userName);
-      //   append(messageMeta, userName);
+      append(messageMeta, messageTime);
       append(contentWrapper, userMessage);
       append(contentWrapper, messageMeta);
       append(li, userImg);

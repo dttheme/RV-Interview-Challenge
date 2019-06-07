@@ -1,50 +1,107 @@
 .main {
   background-color: #eeeeee;
   font-family: "Roboto", sans-serif;
-  color: #cacaca;
+  color: rgba(154, 154, 154, 255);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .chatTranscript {
-  max-width: 700px;
-  margin: 30px auto;
-  box-shadow: 0 0 100px #dfdfdf;
+  max-width: 43.75rem;
+  box-shadow: 0 0 6.25rem #cccccc;
   background-color: #ffffff;
-  padding: 30px;
+  padding: 1.875rem;
 }
 .header,
 .message {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0.9375rem;
+}
+.header {
+  font-size: 1.125rem;
 }
 .header__title {
-  font-family: "Asap Condensed", sans-serif;
-  color: #242424;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 4px;
+  font-family: "Roboto Condensed", sans-serif;
+  color: rgba(0, 0, 0, 255);
+  font-weight: 400;
+  letter-spacing: 0.125rem;
 }
 .hr {
   background-color: #f2f2f2;
   width: 100%;
-  height: 2px;
+  height: 0.125rem;
   border: none;
+  margin: 0.3125rem 0;
 }
 .message__userImg {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin: 0 30px 0 0;
+  width: 3.125rem;
+  height: 3.125rem;
 }
 .message__contentWrapper {
   background-color: #f2f2f2;
-  padding: 15px;
+  padding: 1.25rem;
   color: #242424;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
+  width: 80%;
 }
 .message__meta {
-  margin-top: 15px;
+  margin-top: 0.9375rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
 }
 .message__userName {
-  color: #ff5d5f;
+  color: rgba(255, 93, 93, 255);
+  font-size: 1.125rem;
+  margin-right: 1.875rem;
+}
+.message__messageTime {
+  color: rgba(51, 51, 51, 255);
+  font-size: 0.75rem;
+}
+.message__messageTime::before {
+  content: url("../clock.png");
+  margin-right: 0.1875rem;
+  vertical-align: middle;
+}
+.message__otherUser {
+}
+.message__activeUser {
+  flex-direction: row-reverse;
+}
+.message__activeUser .message__contentWrapper::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%; /* To the right of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+.message__activeUser .message__userName {
+  color: rgba(93, 162, 255, 255);
+}
+.focused {
+  background-color: #ffffff;
+}
+@media (max-width: 30rem) {
+  html {
+    font-size: 14px;
+  }
+  .header {
+    flex-wrap: wrap;
+  }
+  .main {
+    height: 100%;
+  }
+  .message__contentWrapper {
+    width: 70%;
+  }
+  .chatTranscript {
+    padding: 10px;
+  }
 }
