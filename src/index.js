@@ -54,7 +54,7 @@ fetch(API_RESOURCE)
         userImg = createNode("img"),
         userName = createNode("span"),
         messageTime = createNode("span"),
-        userMessage = createNode("span"),
+        userMessage = createNode("div"),
         contentWrapper = createNode("div"),
         messageMeta = createNode("div");
 

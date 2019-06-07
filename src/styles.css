@@ -17,7 +17,7 @@
 .message {
   display: flex;
   justify-content: space-between;
-  padding: 0.9375rem;
+  padding: 0.9375rem 0;
 }
 .header {
   font-size: 1.125rem;
@@ -46,6 +46,9 @@
   color: #242424;
   border-radius: 0.3125rem;
   width: 80%;
+  position: relative;
+}
+.message__contentWrapper::after {
 }
 .message__meta {
   margin-top: 0.9375rem;
@@ -72,15 +75,26 @@
 .message__activeUser {
   flex-direction: row-reverse;
 }
+
 .message__activeUser .message__contentWrapper::after {
   content: " ";
   position: absolute;
-  top: 50%;
-  left: 100%; /* To the right of the tooltip */
+  top: 30%;
+  left: 100%;
   margin-top: -5px;
-  border-width: 5px;
+  border-width: 7px;
   border-style: solid;
-  border-color: transparent transparent transparent black;
+  border-color: transparent transparent transparent #f2f2f2;
+}
+.message__otherUser .message__contentWrapper::after {
+  content: " ";
+  position: absolute;
+  top: 30%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent #f2f2f2 transparent transparent;
 }
 .message__activeUser .message__userName {
   color: rgba(93, 162, 255, 255);
@@ -92,6 +106,9 @@
   html {
     font-size: 14px;
   }
+  .chatTranscript {
+    padding: 10px;
+  }
   .header {
     flex-wrap: wrap;
   }
@@ -100,8 +117,5 @@
   }
   .message__contentWrapper {
     width: 70%;
-  }
-  .chatTranscript {
-    padding: 10px;
   }
 }
