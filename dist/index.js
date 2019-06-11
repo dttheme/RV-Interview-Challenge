@@ -65,6 +65,7 @@ fetch(API_RESOURCE)
 
       // Assign data to nodes
       userImg.src = message.image;
+      userImg.alt = message.username;
       userName.innerHTML = message.username;
       messageTime.innerHTML = formattedTime;
       userMessage.innerHTML = message.message;
