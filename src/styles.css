@@ -1,5 +1,5 @@
 .main {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 1);
   font-family: "Roboto", sans-serif;
   color: rgba(154, 154, 154, 255);
   height: 100%;
@@ -9,15 +9,15 @@
 }
 .chatTranscript {
   max-width: 43.75rem;
-  box-shadow: 0 0 6.25rem #cccccc;
-  background-color: #ffffff;
+  box-shadow: 0 0 6.25rem rgba(204, 204, 204, 1);
+  background-color: rgba(255, 255, 255, 1);
   padding: 1.875rem;
 }
 .header,
 .message {
   display: flex;
   justify-content: space-between;
-  padding: 15px 0;
+  padding: 0.9375rem 0;
 }
 .header {
   font-size: 1.125rem;
@@ -29,7 +29,7 @@
   letter-spacing: 0.125rem;
 }
 .hr {
-  background-color: #f2f2f2;
+  background-color: rgba(242, 242, 242, 1);
   width: 100%;
   height: 0.125rem;
   border: none;
@@ -41,9 +41,9 @@
   height: 3.125rem;
 }
 .message__contentWrapper {
-  background-color: #f2f2f2;
+  background-color: rgba(242, 242, 242, 1);
   padding: 1.5rem;
-  color: #242424;
+  color: rgba(36, 36, 36, 1);
   border-radius: 0.3125rem;
   width: 80%;
   position: relative;
@@ -80,7 +80,7 @@
   margin-top: -0.3125rem;
   border-width: 0.4375rem;
   border-style: solid;
-  border-color: transparent transparent transparent #f2f2f2;
+  border-color: transparent transparent transparent rgba(242, 242, 242, 1);
 }
 .message__otherUser .message__contentWrapper::after {
   content: " ";
@@ -90,18 +90,18 @@
   margin-top: -0.3125rem;
   border-width: 0.4375rem;
   border-style: solid;
-  border-color: transparent #f2f2f2 transparent transparent;
+  border-color: transparent rgba(242, 242, 242, 1) transparent transparent;
 }
 .message__activeUser .message__userName {
   color: rgba(93, 162, 255, 255);
 }
 .focused .message__contentWrapper {
-  background-color: #ffffff;
-  box-shadow: 0 0.9375rem 1.875rem #e0e0e0;
-  border-color: transparent transparent transparent #ffffff;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0.9375rem 1.875rem rgba(224, 224, 224, 1);
+  border-color: transparent transparent transparent rgba(255, 255, 255, 1);
 }
 .focused .message__contentWrapper::after {
-  border-color: transparent transparent transparent #ffffff;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 1);
 }
 
 @media (max-width: 30rem) {
