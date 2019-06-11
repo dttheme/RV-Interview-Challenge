@@ -80,7 +80,7 @@
   margin-top: -0.3125rem;
   border-width: 0.4375rem;
   border-style: solid;
-  border-color: transparent transparent transparent #ffffff;
+  border-color: transparent transparent transparent #f2f2f2;
 }
 .message__otherUser .message__contentWrapper::after {
   content: " ";
@@ -98,7 +98,12 @@
 .focused .message__contentWrapper {
   background-color: #ffffff;
   box-shadow: 0 0.9375rem 1.875rem #e0e0e0;
+  border-color: transparent transparent transparent #ffffff;
 }
+.focused .message__contentWrapper::after {
+  border-color: transparent transparent transparent #ffffff;
+}
+
 @media (max-width: 30rem) {
   html {
     font-size: 0.875rem;

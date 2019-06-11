@@ -8,7 +8,7 @@ const createNode = element => {
 const append = (parent, el) => {
   return parent.appendChild(el);
 };
-// Manipulate date
+// Format Year-Month-Date into DayOfTheWeek, Month Day, Year
 const formatDate = date => {
   var options = {
     weekday: "long",
@@ -20,6 +20,7 @@ const formatDate = date => {
   return formattedDate.slice(0, formattedDate.length - 12);
 };
 
+// Format UNIX time to time string
 const formatTime = timestamp => {
   return new Date(timestamp).toLocaleTimeString([], {
     hour: "2-digit",
@@ -34,15 +35,11 @@ const dateWrapper = document.querySelector(".header__date");
 fetch(API_RESOURCE)
   .then(res => res.json())
   .then(data => {
-    console.log(data.data);
-
     const messages = data.data.messages,
-      date = data.data.conversationDate;
+      formattedDate = formatDate(data.data.conversationDate);
     return messages.map(message => {
-      // Data variables to append
-      const formattedDate = formatDate(date),
-        formattedTime = formatTime(message.timestamp);
-
+      // Timestamp for each message
+      const formattedTime = formatTime(message.timestamp);
       // Check for active user and apply correct class name
       // In a real application, I would be checking against the active user data held in state
       const user = message.username.split(" ").join("");
@@ -73,6 +70,7 @@ fetch(API_RESOURCE)
       userMessage.innerHTML = message.message;
       dateWrapper.innerHTML = formattedDate;
 
+      //Write to document
       append(messageMeta, userName);
       append(messageMeta, messageTime);
       append(contentWrapper, userMessage);
