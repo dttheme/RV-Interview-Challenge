@@ -2,7 +2,7 @@
   background-color: #eeeeee;
   font-family: "Roboto", sans-serif;
   color: rgba(154, 154, 154, 255);
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
 .message {
   display: flex;
   justify-content: space-between;
-  padding: 0.9375rem 0;
+  padding: 15px 0;
 }
 .header {
   font-size: 1.125rem;
@@ -33,7 +33,7 @@
   width: 100%;
   height: 0.125rem;
   border: none;
-  margin: 0.3125rem 0;
+  margin: 0.8rem 0;
 }
 .message__userImg {
   border-radius: 50%;
@@ -42,13 +42,12 @@
 }
 .message__contentWrapper {
   background-color: #f2f2f2;
-  padding: 1.25rem;
+  padding: 1.5rem;
   color: #242424;
   border-radius: 0.3125rem;
   width: 80%;
   position: relative;
-}
-.message__contentWrapper::after {
+  line-height: 1.5;
 }
 .message__meta {
   margin-top: 0.9375rem;
@@ -70,44 +69,42 @@
   margin-right: 0.1875rem;
   vertical-align: middle;
 }
-.message__otherUser {
-}
 .message__activeUser {
   flex-direction: row-reverse;
 }
-
 .message__activeUser .message__contentWrapper::after {
   content: " ";
   position: absolute;
-  top: 30%;
+  top: 15%;
   left: 100%;
-  margin-top: -5px;
-  border-width: 7px;
+  margin-top: -0.3125rem;
+  border-width: 0.4375rem;
   border-style: solid;
-  border-color: transparent transparent transparent #f2f2f2;
+  border-color: transparent transparent transparent #ffffff;
 }
 .message__otherUser .message__contentWrapper::after {
   content: " ";
   position: absolute;
-  top: 30%;
+  top: 15%;
   right: 100%;
-  margin-top: -5px;
-  border-width: 7px;
+  margin-top: -0.3125rem;
+  border-width: 0.4375rem;
   border-style: solid;
   border-color: transparent #f2f2f2 transparent transparent;
 }
 .message__activeUser .message__userName {
   color: rgba(93, 162, 255, 255);
 }
-.focused {
+.focused .message__contentWrapper {
   background-color: #ffffff;
+  box-shadow: 0 0.9375rem 1.875rem #e0e0e0;
 }
 @media (max-width: 30rem) {
   html {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .chatTranscript {
-    padding: 10px;
+    padding: 0.625rem;
   }
   .header {
     flex-wrap: wrap;
