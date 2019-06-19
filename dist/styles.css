@@ -1,0 +1,123 @@
+.main {
+  background-color: rgba(238, 238, 238, 1);
+  font-family: "Roboto", sans-serif;
+  color: rgba(154, 154, 154, 255);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chatTranscript {
+  max-width: 43.75rem;
+  box-shadow: 0 0 6.25rem rgba(204, 204, 204, 1);
+  background-color: rgba(255, 255, 255, 1);
+  padding: 1.875rem;
+}
+.header,
+.message {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9375rem 0;
+}
+.header {
+  font-size: 1.125rem;
+}
+.header__title {
+  font-family: "Roboto Condensed", sans-serif;
+  color: rgba(0, 0, 0, 255);
+  font-weight: 400;
+  letter-spacing: 0.125rem;
+}
+.hr {
+  background-color: rgba(242, 242, 242, 1);
+  width: 100%;
+  height: 0.125rem;
+  border: none;
+  margin: 0.8rem 0;
+}
+.message__userImg {
+  border-radius: 50%;
+  width: 3.125rem;
+  height: 3.125rem;
+}
+.message__contentWrapper {
+  background-color: rgba(242, 242, 242, 1);
+  padding: 1.5rem;
+  color: rgba(36, 36, 36, 1);
+  border-radius: 0.3125rem;
+  width: 80%;
+  position: relative;
+  line-height: 1.5;
+}
+.message__meta {
+  margin-top: 0.9375rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.message__userName {
+  color: rgba(255, 93, 93, 255);
+  font-size: 1.125rem;
+  margin-right: 1.875rem;
+}
+.message__messageTime {
+  color: rgba(51, 51, 51, 255);
+  font-size: 0.75rem;
+}
+.message__messageTime::before {
+  content: url("../clock.png");
+  margin-right: 0.1875rem;
+  vertical-align: middle;
+}
+.message__activeUser {
+  flex-direction: row-reverse;
+}
+.message__activeUser .message__contentWrapper::after {
+  content: " ";
+  position: absolute;
+  top: 15%;
+  left: 100%;
+  margin-top: -0.3125rem;
+  border-width: 0.4375rem;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(242, 242, 242, 1);
+}
+.message__otherUser .message__contentWrapper::after {
+  content: " ";
+  position: absolute;
+  top: 15%;
+  right: 100%;
+  margin-top: -0.3125rem;
+  border-width: 0.4375rem;
+  border-style: solid;
+  border-color: transparent rgba(242, 242, 242, 1) transparent transparent;
+}
+.message__activeUser .message__userName {
+  color: rgba(93, 162, 255, 255);
+}
+.focused .message__contentWrapper {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0.9375rem 1.875rem rgba(224, 224, 224, 1);
+  border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+}
+.focused .message__contentWrapper::after {
+  border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 30rem) {
+  html {
+    font-size: 0.875rem;
+  }
+  .chatTranscript {
+    padding: 0.625rem;
+  }
+  .header {
+    flex-wrap: wrap;
+  }
+  .main {
+    height: 100%;
+  }
+  .message__contentWrapper {
+    width: 70%;
+  }
+}
